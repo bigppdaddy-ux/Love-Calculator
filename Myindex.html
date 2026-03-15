@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Love Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h2 { color: #ff4b2b; }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ffd1d1;
+            border-radius: 10px;
+            outline: none;
+        }
+        button {
+            background: #ff4b2b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        button:hover { background: #ff416c; transform: scale(1.05); }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .emoji { font-size: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>❤️ Love Calculator ❤️</h2>
+    <p>Enter names to check compatibility!</p>
+    <input type="text" id="name1" placeholder="Your Name">
+    <input type="text" id="name2" placeholder="Partner's Name">
+    <br>
+    <button onclick="calculateLove()">Calculate</button>
+    
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateLove() {
+        const name1 = document.getElementById('name1').value.trim();
+        const name2 = document.getElementById('name2').value.trim();
+
+        if (name1 === "" || name2 === "") {
+            alert("Plz enter both names!");
+            return;
+        }
+
+        // Simple Random Logic (Maintenance Free!)
+        const score = Math.floor(Math.random() * 100) + 1;
+        let message = "";
+        let emoji = "";
+
+        if (score > 80) {
+            message = "Perfect Match!";
+            emoji = "💍";
+        } else if (score > 50) {
+            message = "Good Friends!";
+            emoji = "😊";
+        } else {
+            message = "Hard Luck!";
+            emoji = "💔";
+        }
+
+        document.getElementById('result').innerHTML = 
+            `<div class="emoji">${emoji}</div>` +
+            `Score: ${score}% <br>` +
+            `<small>${message}</small>`;
+    }
+</script>
+
+</body>
+</html>
